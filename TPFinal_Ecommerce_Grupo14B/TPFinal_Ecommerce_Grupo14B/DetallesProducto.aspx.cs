@@ -39,10 +39,43 @@ namespace TPFinal_Ecommerce_Grupo14B
                         Response.Write("No se encontró el ID del producto en la sesión.");
                     }
 
-                }
+                ChequearStock();
+            }
                 //}
                 
             }
+
+        public void ChequearStock()
+        {
+            try
+            {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            int stock = negocio.ObtenerStockDisponible(int.Parse(lblID.Text));
+                if (stock == 0)
+                {
+                    btnAgregarCarrito.Enabled = false;
+                    btnAgregarCarrito.Text = "Artículo sin stock.";
+                    btnAgregarCarrito.CssClass = "btn btn-warning";
+                }
+                else
+                {
+                    btnAgregarCarrito.Enabled = true;
+                    btnAgregarCarrito.Text = "Agregar al carrito";
+                    btnAgregarCarrito.CssClass = "btn btn-primary";
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MostrarError("Ocurrió un error al verificar el stock: " + ex.Message);
+            }
+        }
+        private void MostrarError(string mensaje)
+        {
+            string script = $"Swal.fire({{title: 'Error', text: '{mensaje}', icon: 'error'}});";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ErrorAlert", script, true);
+        }
         public void CargaDetallesProducto(string id)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
