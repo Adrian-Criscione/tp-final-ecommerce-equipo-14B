@@ -31,7 +31,7 @@ namespace Negocio
                     aux.Direccion = (string)datos.Lector["direccion"];
                     aux.Telefono = (string)datos.Lector["telefono"];
                     aux.Localidad = (string)datos.Lector["localidad"];
-                    aux.FechaNacimiento = (DateTime)datos.Lector["fecha_nacimiento"];
+                    aux.FechaNacimiento = ((DateTime)datos.Lector["fecha_nacimiento"];
                     aux.Estado = (bool)datos.Lector["estado"];
                     aux.IdRol = (int)datos.Lector["IdRol"];
 

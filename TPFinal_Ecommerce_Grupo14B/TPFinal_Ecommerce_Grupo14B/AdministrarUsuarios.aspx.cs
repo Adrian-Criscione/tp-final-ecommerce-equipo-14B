@@ -25,34 +25,7 @@ namespace TPFinal_Ecommerce_Grupo14B
             }
         }
         //cargar 5 datos de prueba
-        public void cargarDatosPrueba()
-        {
-            //necesito cargar 5 usuarios de prueba por constructor
-            List<Usuario> lista = new List<Usuario>();
-
-            Usuario u1 = new Usuario();
-            u1.Id = 1;
-            u1.Nombre = "Juan";
-            u1.Correo = "Nada@nada";
-            u1.Clave = "123";
-            u1.Direccion = "Calle falsa 123";
-            u1.Telefono = "123456";
-            u1.Localidad = "Springfield";
-            u1.FechaNacimiento = DateTime.Parse("01/01/1990");
-            u1.Estado = true;
-            u1.IdRol = 1;
-
-            //agregar ese usuario a la 
-            lista.Add(u1);
-
-            //cargar la dgv con la lista
-            gvUsuarios.DataSource = lista;
-            gvUsuarios.DataBind();
-
-
-
-        }
-
+        
         public void CargarUsuarios()
         {
             List<Usuario> lista = new List<Usuario>();

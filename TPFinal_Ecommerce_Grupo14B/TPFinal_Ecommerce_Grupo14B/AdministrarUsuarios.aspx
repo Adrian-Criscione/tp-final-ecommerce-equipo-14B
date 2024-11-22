@@ -19,11 +19,11 @@
                         <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" SortExpression="Id" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                         <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
-                        <asp:BoundField DataField="Clave" HeaderText="Clave" SortExpression="Clave" />
+                        <asp:BoundField DataField="Clave" HeaderText="Clave" SortExpression="Clave" DataFormatString="****" />
                         <asp:BoundField DataField="Telefono" HeaderText="Teléfono" SortExpression="Telefono" />
                         <asp:BoundField DataField="Direccion" HeaderText="Dirección" SortExpression="Direccion" />
                         <asp:BoundField DataField="Localidad" HeaderText="Localidad" SortExpression="Localidad" />
-                        <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha de Nacimiento" SortExpression="FechaNacimiento" />
+                        <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha de Nacimiento" SortExpression="FechaNacimiento" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
                         <asp:CheckBoxField HeaderText="Estado" DataField="Estado" SortExpression="Estado" />
                         <asp:BoundField DataField="IDRol" HeaderText="Rol" SortExpression="IDRol" />
                         <asp:CommandField ShowSelectButton="True" SelectText="✍️" ButtonType="Button" />
