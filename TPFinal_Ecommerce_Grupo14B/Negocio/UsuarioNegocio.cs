@@ -51,36 +51,36 @@ namespace Negocio
             }
         }
 
-        public bool loguear (Usuario usuario)
+        public bool loguear(Usuario usuario)
         {
-             AccesoDatos datos = new AccesoDatos();
+            AccesoDatos datos = new AccesoDatos();
 
-             try
-             {
-                 datos.setearConsulta("select idUsuario, correo, clave, IdRol from Usuarios where correo = @correo AND clave = @clave");
-                 datos.setearParametro("@correo", usuario.Correo);
-                 datos.setearParametro("@clave", usuario.Clave);
-                 datos.ejecutarLectura();
+            try
+            {
+                datos.setearConsulta("select idUsuario, correo, clave, IdRol from Usuarios where correo = @correo AND clave = @clave");
+                datos.setearParametro("@correo", usuario.Correo);
+                datos.setearParametro("@clave", usuario.Clave);
+                datos.ejecutarLectura();
 
-                 //para ver si hay un usuario logeado
-                if(datos.Lector.Read())
-                 {
-                     usuario.Id =(int) datos.Lector["idUsuario"];
-                     usuario.IdRol = (int)datos.Lector["IdRol"];
-                     return true;
-                 }
-                 return false;
-             }
-             catch (Exception ex )
-             {
+                //para ver si hay un usuario logeado
+                if (datos.Lector.Read())
+                {
+                    usuario.Id = (int)datos.Lector["idUsuario"];
+                    usuario.IdRol = (int)datos.Lector["IdRol"];
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
 
-                 throw ex;
-             }
-             finally
-             {
-                 datos.cerrarConexion();
-             }
-           
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
         }
         public void agregar(Usuario usuario)
         {

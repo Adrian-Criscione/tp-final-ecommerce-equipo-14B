@@ -99,7 +99,6 @@
     <Content Include="Registro.aspx" />
     <Content Include="AdministrarCategorias.aspx" />
     <Content Include="ReporteProductos.aspx" />
-    <Content Include="Reportes.aspx" />
     <Content Include="Styles\StyleSheet.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -280,13 +279,6 @@
     </Compile>
     <Compile Include="ReporteProductos.aspx.designer.cs">
       <DependentUpon>ReporteProductos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes.aspx.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reportes.aspx.designer.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -33,10 +33,10 @@ namespace TPFinal_Ecommerce_Grupo14B
             gvPocoStock.PageIndex = e.NewPageIndex;
             CargarTotaldeProductos(); 
         }
-      
 
-
-
-
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/AdministracionGeneral.aspx");
+        }
     }
 }

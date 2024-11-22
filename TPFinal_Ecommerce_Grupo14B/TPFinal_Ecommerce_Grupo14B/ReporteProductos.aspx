@@ -191,4 +191,6 @@
                 });
             </script>
 
+             <asp:Button Text="Volver" ID="btnVolver" CssClass="btn btn-primary" OnClick="btnVolver_Click" runat="server" />
+
 </asp:Content>

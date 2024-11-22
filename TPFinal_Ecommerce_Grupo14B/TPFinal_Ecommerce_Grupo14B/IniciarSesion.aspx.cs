@@ -47,7 +47,7 @@ namespace TPFinal_Ecommerce_Grupo14B
                         Session["idRol"] = usuario.IdRol;
 
                         string mensajeExito = usuario.IdRol == 3
-                            ? "¡Bienvenido! Redirigiendo a la página principal..." : "¡Acceso de administrador exitoso! Redirigiendo al panel...";
+                            ? "¡Bienvenido! Redirigiendo a la página principal..." : "¡Acceso exitoso! Redirigiendo al panel...";
 
                         string redireccion = usuario.IdRol == 3
                             ? "Default.aspx" : "AdministracionGeneral.aspx";
