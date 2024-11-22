@@ -31,10 +31,15 @@ namespace TPFinal_Ecommerce_Grupo14B
         private void CargarCategorias()
         {
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-            listaCategorias = categoriaNegocio.listar(); // Método para obtener categorías
+            listaCategorias = categoriaNegocio.listar(true); // Obtener categorías habilitadas
+
+            // Agregar manualmente la opción "Mostrar Todos"
+            listaCategorias.Insert(0, new Categoria { Id = 0, Nombre = "Mostrar Todos", Activo = true });
+
             repCategorias.DataSource = listaCategorias;
             repCategorias.DataBind();
         }
+
         private void CargarProductos()
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -57,16 +62,25 @@ namespace TPFinal_Ecommerce_Grupo14B
             // Redirige a la página de detalles
             Response.Redirect("DetallesProducto.aspx");
         }
-
         protected void filtrarPorCategoria_Click(object sender, EventArgs e)
         {
             LinkButton btnCategoria = (LinkButton)sender;
             int idCategoria = int.Parse(btnCategoria.CommandArgument);
 
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            listaArticulos = articuloNegocio.listarPorCategoria(idCategoria); // Método para filtrar productos por categoría
+
+            if (idCategoria == 0) // Mostrar todos
+            {
+                listaArticulos = articuloNegocio.listarConSP(); // Método para obtener todos los productos
+            }
+            else
+            {
+                listaArticulos = articuloNegocio.listarPorCategoria(idCategoria); // Filtrar por categoría
+            }
+
             repRepetidor.DataSource = listaArticulos;
             repRepetidor.DataBind();
         }
+
     }
 }

@@ -10,13 +10,18 @@ namespace Negocio
 {
     public class CategoriaNegocio
     {
-        public List<Categoria> listar()
+        public List<Categoria> listar(bool soloHabilitadas = false)
         {
             List<Categoria> lista = new List<Categoria>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select idCategoria, nombre, estado from Categorias");
+                string consulta = "SELECT idCategoria, nombre, estado FROM Categorias ";
+                if (soloHabilitadas)
+                {
+                    consulta += " WHERE estado = 1";
+                }
+                datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -41,6 +46,7 @@ namespace Negocio
             }
             return lista;
         }
+
 
         /*  public void verificarDuplicado(Categoria categoria)
           {
