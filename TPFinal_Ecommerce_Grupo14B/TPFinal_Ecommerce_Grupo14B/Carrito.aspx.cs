@@ -13,6 +13,7 @@ namespace TPFinal_Ecommerce_Grupo14B
     {
         public List<Articulo> ListaArticulos = new List<Articulo>();
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -142,9 +143,21 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnPagar_Click(object sender, EventArgs e)
         {
-            Usuario usuario = (Usuario)Session["usuario"];            
-            Session["usuarioActual"] = usuario;
-            Response.Redirect("Pagos.aspx");
+            // Intentamos obtener el usuario desde la sesión
+            Usuario usuario = (Usuario)Session["usuario"];
+
+            // Verificamos si el usuario es null
+            if (usuario == null)
+            {
+                // Si es null, redirigimos a la página de inicio de sesión
+                Response.Redirect("IniciarSesion.aspx");
+            }
+            else
+            {
+                // Si el usuario no es null, lo guardamos en la sesión y redirigimos a la página de pagos
+                Session["usuarioActual"] = usuario;
+                Response.Redirect("Pagos.aspx");
+            }
         }
         protected void gvCarrito_RowCommand(object sender, GridViewCommandEventArgs e)
         {
