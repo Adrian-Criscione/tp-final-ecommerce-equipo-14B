@@ -16,17 +16,48 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //TODO: SI ESTAS LOGUEADO COMO USUARIO O EMPLEADO TE DEJA INGRESAR AHI 
-            if (Session["idRol"] == null)
-            {
-                Response.Redirect("IniciarSesion.aspx");
-            }
+            
+            chequearUsuarios();
+
             if (!IsPostBack)
             {
                 ListarCategorias();
             }
         }
+        public void chequearUsuarios()
+        {
+            if (Session["idRol"] == null)
+            {
+                Response.Redirect("IniciarSesion.aspx");
+            }
+            else
+            {
+                int idRol = Convert.ToInt32(Session["idRol"]);
 
+                // Verificar si el usuario no es el ID 1
+                if (idRol != 1 && idRol != 2)
+                {
+                    // Script para mostrar el mensaje de error y redirigir
+                    string script = @"
+            Swal.fire({
+                title: 'Acceso denegado',
+                text: 'No tiene permisos para ingresar a esta página.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'Default.aspx';
+                }
+            });";
+
+                    // Registrar el script para que se ejecute en el cliente
+                    ClientScript.RegisterStartupScript(this.GetType(), "PermisosDenegados", script, true);
+
+                    // Salir del flujo normal de la página
+                    return;
+                }
+            }
+        }
         private void ListarCategorias(string filtro = "")
         {
             // Obtenemos la lista de categorías del negocio
