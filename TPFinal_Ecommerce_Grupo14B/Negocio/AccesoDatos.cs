@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 
 namespace negocio
@@ -64,19 +65,39 @@ namespace negocio
             {
                 throw ex;
             }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
         }
 
         public int ejecutarAccionScalar()
         {
+            if (comando == null)
+            {
+                throw new InvalidOperationException("El comando no está inicializado.");
+            }
+
             comando.Connection = conexion;
             try
             {
                 conexion.Open();
-                return int.Parse(comando.ExecuteScalar().ToString());
+                var result = comando.ExecuteScalar();
+                return result != null ? int.Parse(result.ToString()) : 0;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error al ejecutar la acción scalar", ex);
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
             }
         }
 

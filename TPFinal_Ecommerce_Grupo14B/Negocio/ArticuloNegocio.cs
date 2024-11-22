@@ -3,6 +3,7 @@ using negocio;
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -17,10 +18,10 @@ namespace Negocio
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
-            
+
             try
             {
-                
+
                 datos.setearConsulta("select a.idArticulo, a.nombre, a.descripcion, a.precio, a.stock, a.categoria_id , i.url from Articulos a inner join imagenes i on a.idArticulo = i.idArticulo");
                 datos.ejecutarLectura();
 
@@ -302,6 +303,60 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+        public int ObtenerStockDisponible(int articuloId)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT Stock FROM Articulos WHERE Idarticulo = @ArticuloId");
+                datos.setearParametro("@ArticuloId", articuloId);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    return (int)datos.Lector["Stock"];
+                }
+                else
+                {
+                    throw new InvalidOperationException($"No se encontró el artículo con ID {articuloId}.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el stock disponible", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void ActualizarStock(int articuloId, int cantidadVendida)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE Articulos SET Stock = Stock - @CantidadVendida WHERE Idarticulo = @ArticuloId AND Stock >= @CantidadVendida");
+                datos.setearParametro("@CantidadVendida", cantidadVendida);
+                datos.setearParametro("@ArticuloId", articuloId);
+
+                datos.ejecutarAccion();
+
+                // Verificar que se haya actualizado el stock
+                int stockActualizado = ObtenerStockDisponible(articuloId);
+                if (stockActualizado < 0)
+                {
+                    throw new InvalidOperationException($"No se pudo actualizar el stock para el artículo con ID {articuloId}. Verifica que haya suficiente stock disponible.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar el stock", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
 

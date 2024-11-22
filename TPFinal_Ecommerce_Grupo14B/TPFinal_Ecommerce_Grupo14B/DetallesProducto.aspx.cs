@@ -41,6 +41,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 
                 }
                 //}
+                
             }
         public void CargaDetallesProducto(string id)
         {

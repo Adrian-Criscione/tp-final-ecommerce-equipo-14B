@@ -125,12 +125,35 @@ namespace TPFinal_Ecommerce_Grupo14B
 
             pedidoNegocio.InstertarPedido(pedido);
 
+            // Descontar stock de cada artículo
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            foreach (var articulo in listaArticulos)
+            {
+                if (diccionarioCantidades.TryGetValue(articulo.Id, out int cantidadVendida))
+                {
+                    int stockDisponible = articuloNegocio.ObtenerStockDisponible(articulo.Id);
+                    if (stockDisponible >= cantidadVendida)
+                    {
+                        articuloNegocio.ActualizarStock(articulo.Id, cantidadVendida);
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException($"No hay suficiente stock para el artículo con ID {articulo.Id}. Stock disponible: {stockDisponible}, cantidad requerida: {cantidadVendida}.");
+                    }
+                }
+            }
+
+
+
+
             //poner todos los valores en cero del carrito que ya se cargo la venta
             Session["ListaArticulos"] = null;
             Session["DiccionarioCantidades"] = null;
             listaArticulos = null;
             diccionarioCantidades = null;
             usuario = null;
+
+            MostrarSweetAlert("Éxito", "El pedido se procesó correctamente y el stock fue actualizado.");
 
 
         }
