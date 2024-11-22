@@ -80,5 +80,15 @@ namespace TPFinal_Ecommerce_Grupo14B
             Response.Redirect("/FormularioUsuario.aspx?id=" + id);
 
         }
+
+        protected void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtFiltro.Text;
+            List<Usuario> lista = UsuarioNegocio.listar();
+            lista = lista.Where(u => u.Nombre.Contains(filtro) || u.Correo.Contains(filtro)).ToList(); 
+            gvUsuarios.DataSource = lista;
+            gvUsuarios.DataBind();
+
+        }
     }
 }

@@ -5,6 +5,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <h1>Administrar Usuarios</h1>
+    <div class="row">
+    <div class="col-6">
+        <div class="mb-3">
+            <asp:Label Text="Filtrar" runat="server" />
+            <asp:TextBox runat="server" ID="txtFiltro" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged" />
+        </div>
+    </div>
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" CssClass="table table-striped table-bordered table-hover" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged" HeaderStyle-CssClass="table-dark">
