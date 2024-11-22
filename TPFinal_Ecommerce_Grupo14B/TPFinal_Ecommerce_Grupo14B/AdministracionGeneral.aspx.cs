@@ -23,7 +23,6 @@ namespace TPFinal_Ecommerce_Grupo14B
             {
                 btnAdminUsuarios.Visible = true;
                 btnAdminReportes.Visible = true;
-                btnConfiguracion.Visible = true;
             }
         }
 

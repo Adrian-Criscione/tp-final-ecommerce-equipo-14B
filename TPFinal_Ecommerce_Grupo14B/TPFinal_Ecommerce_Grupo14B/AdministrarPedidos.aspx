@@ -17,5 +17,6 @@
                 <asp:ButtonField ButtonType="Button" CommandName="CambiarEstado" Text="Cambiar Estado"  />
             </Columns>
         </asp:GridView>
+         <asp:Button Text="Volver" runat="server" CssClass="btn btn-primary " ID="btnVolver" OnClick="btnVolver_Click" />
     </div>
 </asp:Content>

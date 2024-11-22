@@ -40,7 +40,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="fechaExpiracion" class="form-label">Fecha de Expiración</label>
-                        <input type="text" class="form-control" id="fechaExpiracion" placeholder="MM/AA">
+                        <asp:TextBox ID="txtfechaExpiracion" runat="server" CssClass="form-control" placeholder="MM/AA"></asp:TextBox>
                     </div>
                 </div>
             </div>
@@ -50,17 +50,11 @@
                 <h4>Método de Entrega</h4>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="metodoEntrega" id="envioDomicilio" value="envioDomicilio" onclick="mostrarDireccionEnvio()">
-                    <label class="form-check-label" for="envioDomicilio">
-                        Envío a Domicilio
-                   
-                    </label>
+                    <label class="form-check-label" for="envioDomicilio"> Envío a Domicilio </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="metodoEntrega" id="retiroLocal" value="retiroLocal" onclick="ocultarDireccionEnvio()" checked>
-                    <label class="form-check-label" for="retiroLocal">
-                        Retiro en el Local
-                   
-                    </label>
+                    <label class="form-check-label" for="retiroLocal"> Retiro en el Local</label>
                 </div>
 
                 <!-- Sección para agregar dirección si elige envío a domicilio -->

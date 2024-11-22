@@ -35,8 +35,9 @@ namespace TPFinal_Ecommerce_Grupo14B
             string numeroTarjetaInput = numeroTarjeta.Text.Trim();
             string nombreTarjetaInput = nombreTarjeta.Text.Trim();
             string cvvInput = cvv.Text.Trim();
+            string fechaExpiracionInput = txtfechaExpiracion.Text.Trim();
 
-           
+
             if (string.IsNullOrEmpty(numeroTarjetaInput) || numeroTarjetaInput.Length != 16 || !numeroTarjetaInput.All(char.IsDigit))
             {
                 MostrarSweetAlert("Error", "El número de tarjeta debe contener 16 dígitos numéricos.");
@@ -55,7 +56,19 @@ namespace TPFinal_Ecommerce_Grupo14B
                 return;
             }
 
-           
+            if (string.IsNullOrEmpty(fechaExpiracionInput) || !System.Text.RegularExpressions.Regex.IsMatch(fechaExpiracionInput, @"^\d{4}$"))
+            {
+                MostrarSweetAlert("Error", "La fecha de expiración debe contener exactamente 4 dígitos: 2 para el mes y 2 para el año (MMYY).");
+                return;
+            }
+            int mes = int.Parse(fechaExpiracionInput.Substring(0, 2));
+            int anio = int.Parse(fechaExpiracionInput.Substring(2, 2));
+            if (mes < 1 || mes > 12)
+            {
+                MostrarSweetAlert("Error", "El mes en la fecha de expiración debe estar entre 01 y 12.");
+                return;
+            }
+
             GuardarPedido(); // Lógica para procesar el pedido
             MostrarSweetAlert("Éxito", "El pago se ha procesado correctamente.");
 

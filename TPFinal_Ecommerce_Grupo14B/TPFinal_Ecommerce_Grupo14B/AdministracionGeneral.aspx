@@ -11,6 +11,5 @@
         <asp:Button Text="Administrar Categorías" CssClass="btn btn-primary admin-button" ID="btnAdminCategorias" OnClick="btnAdminCategorias_Click"  runat="server" />
         <asp:Button Text="Administrar Pedidos" CssClass="btn btn-primary admin-button" ID="btnAdminPedidos" OnClick="btnAdminPedidos_Click"  runat="server" />
         <asp:Button Text="Ver Reportes" CssClass="btn btn-primary admin-button" ID="btnAdminReportes" OnClick="btnAdminReportes_Click"  runat="server" Visible="false" />
-        <asp:Button Text="Configuración" CssClass="btn btn-primary admin-button" ID="btnConfiguracion" OnClick="btnConfiguracion_Click"  runat="server" Visible="false" />
     </div>
 </asp:Content>
