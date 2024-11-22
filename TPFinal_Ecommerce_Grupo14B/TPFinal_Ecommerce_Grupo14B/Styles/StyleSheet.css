@@ -1,13 +1,14 @@
 ﻿/*.parallax {*/
-    /* Tamaño del contenedor */
-    /*height: 900px;
+/* Tamaño del contenedor */
+/*height: 900px;
     background-image: url('../images/wallpapper.jpeg');
     background-attachment: fixed;*/ /* Fijo para lograr el efecto parallax */
-    /*background-position: center;
+/*background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
 }*/
+
 
 .product-details {
     background-color: #f8f9fa;
@@ -78,6 +79,7 @@
     margin: 10px;
     width: 240px;
 }
+
 .carousel-control-prev {
     position: absolute;
     top: 200px;
@@ -113,3 +115,74 @@
     opacity: .5;
     transition: opacity .15s ease
 }
+
+
+/* estilos param la pagina defs producots*/
+
+body {
+    background-color: #f8f9fa; /* Fondo beige pastel */
+    /*font-family: 'Courier New', Courier, monospace;*/
+}
+
+.breadcrumb {
+    /*background-color: #ffe4b5;*/ /* Tono melocotón claro */
+}
+
+.breadcrumb-item a {
+    color: #6b4226; /* Marrón oscuro */
+}
+
+.breadcrumb-item.active {
+    color: #d2691e; /* Tono terracota */
+}
+
+h1 {
+    color: #6b4226;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px #d2691e;
+}
+
+.card {
+    border: 2px solid #d2691e;
+    border-radius: 10px;
+    background-color: #fdf5e6; /* Tono crema */
+}
+
+.card-img-top {
+    max-height: 200px; /* Ajusta según la altura deseada */
+    object-fit: cover; /* Mantiene proporciones recortando el contenido si es necesario */
+    object-position: center; /* Centra la imagen recortada */
+}
+.card-title {
+    color: #6b4226;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #8b4513; /* Marrón chocolate */
+}
+
+.btn-retro {
+    background-color: #ffe4b5; /* Tono melocotón claro */
+    color: #6b4226;
+    border: 2px solid #d2691e;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+    .btn-retro:hover {
+        background-color: #d2691e;
+        color: #fff;
+    }
+
+.list-group-item {
+    background-color: #ffe4b5;
+    color: #6b4226;
+}
+
+.list-group-item:hover {
+    background-color: #d2691e;
+    color: #fff;
+}
+

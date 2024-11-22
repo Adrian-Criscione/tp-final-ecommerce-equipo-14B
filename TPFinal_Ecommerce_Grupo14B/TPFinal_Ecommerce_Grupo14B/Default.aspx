@@ -17,11 +17,11 @@
                                 <div class="col-md-4">
                                     <div class="card">
                                         <asp:Image
-                                            ID="imgArticulo" runat="server" CssClass="card-img-top" Width="414px" Height="320px" ImageUrl='<%# string.IsNullOrWhiteSpace(Eval("UrlImagen") as string) ? "https://img.freepik.com/vector-premium/retro-efecto-texto-vintage-anos-70-80-editables-estilo-texto-retro-clasico_546273-329.jpg?w=740" : Eval("UrlImagen") %>' AlternateText='<%# Eval("Nombre") %>' />
+                                            ID="imgArticulo" runat="server" CssClass="card-img-top img-fluid"  ImageUrl='<%# string.IsNullOrWhiteSpace(Eval("UrlImagen") as string) ? "https://img.freepik.com/vector-premium/retro-efecto-texto-vintage-anos-70-80-editables-estilo-texto-retro-clasico_546273-329.jpg?w=740" : Eval("UrlImagen") %>' AlternateText='<%# Eval("Nombre") %>' />
                                         <div class="card-body">
                                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                             <p class="card-text"><%#Eval("Descripcion") %></p>
-                                            <asp:LinkButton ID="btnVerDetalle" runat="server" CssClass="btn btn-primary" CommandArgument='<%# Eval("Id") %>' OnClick="btnVerDetalle_Click">Ver Más</asp:LinkButton>
+                                            <asp:LinkButton ID="btnVerDetalle" runat="server" CssClass="btn btn-retro w-100" CommandArgument='<%# Eval("Id") %>' OnClick="btnVerDetalle_Click">Ver Más</asp:LinkButton>
                                             <%--<asp:Button Text="Comprar" runat="server" ID="btnComprarDestacados" CssClass="btn btn-primary" OnClick="btnComprarDestacados_Click" />--%>
                                         </div>
                                     </div>
@@ -37,11 +37,11 @@
                                 <div class="col-md-4">
                                     <div class="card">
                                         <asp:Image
-                                            ID="imgArticulo" runat="server" CssClass="card-img-top" Width="414px" Height="320px" ImageUrl='<%# string.IsNullOrWhiteSpace(Eval("UrlImagen") as string) ? "https://img.freepik.com/vector-premium/retro-efecto-texto-vintage-anos-70-80-editables-estilo-texto-retro-clasico_546273-329.jpg?w=740" : Eval("UrlImagen") %>' AlternateText='<%# Eval("Nombre") %>' />
+                                            ID="imgArticulo" runat="server" CssClass="card-img-top img-fluid" ImageUrl='<%# string.IsNullOrWhiteSpace(Eval("UrlImagen") as string) ? "https://img.freepik.com/vector-premium/retro-efecto-texto-vintage-anos-70-80-editables-estilo-texto-retro-clasico_546273-329.jpg?w=740" : Eval("UrlImagen") %>' AlternateText='<%# Eval("Nombre") %>' />
                                         <div class="card-body">
                                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                             <p class="card-text"><%#Eval("Descripcion") %></p>
-                                            <asp:LinkButton ID="btnVerDetalle" runat="server" CssClass="btn btn-primary" CommandArgument='<%# Eval("Id") %>' OnClick="btnVerDetalle_Click">Ver Más</asp:LinkButton>
+                                            <asp:LinkButton ID="btnVerDetalle" runat="server" CssClass="btn btn-retro w-100" CommandArgument='<%# Eval("Id") %>' OnClick="btnVerDetalle_Click">Ver Detalle</asp:LinkButton>
                                             <%--<asp:Button Text="Comprar" runat="server" ID="btnComprarDestacados" CssClass="btn btn-primary" OnClick="btnComprarDestacados_Click" />--%>
                                         </div>
                                     </div>

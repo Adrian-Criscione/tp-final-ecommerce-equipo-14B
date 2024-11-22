@@ -304,5 +304,40 @@ namespace Negocio
                 throw ex;
             }
         }
+
+        public List<Articulo> listarPorCategoria(int idCategoria)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT a.Idarticulo, a.Nombre, a.Precio, i.url FROM Articulos A inner join imagenes I ON A.IdArticulo = I.IdArticulo WHERE Categoria_Id = @idCategoria");
+                datos.setearParametro("@idCategoria", idCategoria);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo articulo = new Articulo
+                    {
+                        Id = (int)datos.Lector["Idarticulo"],
+                        Nombre = (string)datos.Lector["Nombre"],
+                        Precio = (decimal)datos.Lector["Precio"],
+                        UrlImagen = (string)datos.Lector["Url"]
+                    };
+                    lista.Add(articulo);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return lista;
+        }
     }
 }

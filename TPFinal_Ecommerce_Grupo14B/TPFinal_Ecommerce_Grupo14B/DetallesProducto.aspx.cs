@@ -15,13 +15,13 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-            {
+            //if (Session["usuario"] == null)
+            //{
 
-                Response.Redirect("IniciarSesion.aspx");
-            }
-            else
-            {
+            //    Response.Redirect("IniciarSesion.aspx");
+            //}
+            //else
+            //{
 
                 if (!IsPostBack)
                 {
@@ -40,8 +40,8 @@ namespace TPFinal_Ecommerce_Grupo14B
                     }
 
                 }
+                //}
             }
-        }
         public void CargaDetallesProducto(string id)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
