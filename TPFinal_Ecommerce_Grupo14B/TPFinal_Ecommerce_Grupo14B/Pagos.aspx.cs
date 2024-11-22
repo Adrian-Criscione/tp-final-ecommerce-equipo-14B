@@ -25,16 +25,46 @@ namespace TPFinal_Ecommerce_Grupo14B
             Dictionary<int, int> diccionarioCantidades = Session["DiccionarioCantidades"] as Dictionary<int, int>;
             int idArticulo = 1;
 
-                Usuario usuario = new Usuario();
-                usuario = (Usuario)Session["usuarioActual"];            
+            Usuario usuario = new Usuario();
+            usuario = (Usuario)Session["usuarioActual"];
         }
 
         //OnClick="ConfirmPago_Click"
         protected void ConfirmPago_Click(object sender, EventArgs e)
         {
+            string numeroTarjetaInput = numeroTarjeta.Text.Trim();
+            string nombreTarjetaInput = nombreTarjeta.Text.Trim();
+            string cvvInput = cvv.Text.Trim();
 
-            GuardarPedido(); 
+           
+            if (string.IsNullOrEmpty(numeroTarjetaInput) || numeroTarjetaInput.Length != 16 || !numeroTarjetaInput.All(char.IsDigit))
+            {
+                MostrarSweetAlert("Error", "El número de tarjeta debe contener 16 dígitos numéricos.");
+                return;
+            }
 
+            if (string.IsNullOrEmpty(nombreTarjetaInput) || !System.Text.RegularExpressions.Regex.IsMatch(nombreTarjetaInput, @"^[a-zA-Z\s]+$"))
+            {
+                MostrarSweetAlert("Error", "El nombre en la tarjeta debe contener solo letras.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(cvvInput) || cvvInput.Length != 3 || !cvvInput.All(char.IsDigit))
+            {
+                MostrarSweetAlert("Error", "El CVV debe contener 3 dígitos numéricos.");
+                return;
+            }
+
+           
+            GuardarPedido(); // Lógica para procesar el pedido
+            MostrarSweetAlert("Éxito", "El pago se ha procesado correctamente.");
+
+        }
+
+        private void MostrarSweetAlert(string titulo, string mensaje)
+        {
+            string script = $"Swal.fire({{title: '{titulo}', text: '{mensaje}', icon: '{(titulo == "Éxito" ? "success" : "error")}'}});";
+            ScriptManager.RegisterStartupScript(this, GetType(), "SweetAlert", script, true);
         }
 
         public void GuardarPedido()
@@ -50,11 +80,12 @@ namespace TPFinal_Ecommerce_Grupo14B
                 // Manejar caso donde falten datos
                 throw new InvalidOperationException("Faltan datos en la sesión para procesar el pedido.");
             }
+            
 
-            // Calcular el subtotal usando una expresión lambda
-            decimal subtotal = listaArticulos
-                .Where(a => diccionarioCantidades.ContainsKey(a.Id)) // Asegurarse de que el artículo esté en el diccionario
-                .Sum(a => a.Precio * diccionarioCantidades[a.Id]);
+          // Calcular el subtotal usando una expresión lambda
+          decimal subtotal = listaArticulos
+              .Where(a => diccionarioCantidades.ContainsKey(a.Id)) // Asegurarse de que el artículo esté en el diccionario
+              .Sum(a => a.Precio * diccionarioCantidades[a.Id]);
             // Datos del pedido
             int idCarrito = usuario.Id; // Generar o asignar el ID del carrito según corresponda
             int idUsuario = usuario.Id;
@@ -65,13 +96,12 @@ namespace TPFinal_Ecommerce_Grupo14B
 
             // Ejemplo: Mostrar datos del pedido
 
-            
             usuario.Direccion = usuarionegocio.BuscarUsuarioPorId(idUsuario).Direccion;
             pedido.UsuarioId = idUsuario;
             pedido.CarritoId = idCarrito;
             pedido.Total = subtotal;
             pedido.FechaPedido = fecha;
-            pedido.Estado = 1;            
+            pedido.Estado = 1;
             pedido.DireccionEnvio = usuario.Direccion;
 
             pedidoNegocio.InstertarPedido(pedido);
@@ -83,7 +113,7 @@ namespace TPFinal_Ecommerce_Grupo14B
             diccionarioCantidades = null;
             usuario = null;
 
-        
+
         }
 
 

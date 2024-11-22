@@ -28,15 +28,15 @@
                 <div id="datosTarjeta" class="mt-3">
                     <div class="mb-3">
                         <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
-                        <input type="text" class="form-control" id="numeroTarjeta" placeholder="Ingrese el número de tarjeta">
+                        <asp:TextBox ID="numeroTarjeta" runat="server" CssClass="form-control" placeholder="Ingrese el número de tarjeta"></asp:TextBox>
                     </div>
                     <div class="mb-3">
                         <label for="nombreTarjeta" class="form-label">Nombre en la Tarjeta</label>
-                        <input type="text" class="form-control" id="nombreTarjeta" placeholder="Ingrese el nombre como aparece en la tarjeta">
+                        <asp:TextBox ID="nombreTarjeta" runat="server" CssClass="form-control" placeholder="Ingrese el nombre como aparece en la tarjeta"></asp:TextBox>
                     </div>
                     <div class="mb-3">
                         <label for="cvv" class="form-label">CVV</label>
-                        <input type="text" class="form-control" id="cvv" placeholder="Código de seguridad (CVV)">
+                        <asp:TextBox ID="cvv" runat="server" CssClass="form-control" placeholder="Código de seguridad (CVV)"></asp:TextBox>
                     </div>
                     <div class="mb-3">
                         <label for="fechaExpiracion" class="form-label">Fecha de Expiración</label>
