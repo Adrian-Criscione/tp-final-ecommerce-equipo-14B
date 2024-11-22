@@ -16,10 +16,10 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            int categoriaID = 1;
+            //int categoriaID = 1;
             ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulos = negocio.listarConSP("spListarArticulosPorCategoria", categoriaID);
-            listaArticulosDos = negocio.listarConSP("spListarArticulosPorCategoria", categoriaID++);
+            listaArticulos = negocio.listarHome();
+            listaArticulosDos = negocio.listarHome();
 
             if (!IsPostBack)
             {

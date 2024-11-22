@@ -17,10 +17,11 @@
                 <ItemTemplate>
                     <div class="col">
                         <div class="card h-100">
-                            <img src="<%#Eval("UrlImagen") %>" width="414" height="320" class="card-img-top" alt='<%#Eval("Nombre") %>'>
+                            <asp:Image
+                                ID="imgArticulo" runat="server" CssClass="card-img-top" Width="414px" Height="320px" ImageUrl='<%# string.IsNullOrWhiteSpace(Eval("UrlImagen") as string) ? "https://img.freepik.com/vector-premium/retro-efecto-texto-vintage-anos-70-80-editables-estilo-texto-retro-clasico_546273-329.jpg?w=740" : Eval("UrlImagen") %>' AlternateText='<%# Eval("Nombre") %>' />
                             <div class="card-body">
                                 <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                                <p class="card-text">$ <%#Eval("Precio") %></p>                                
+                                <p class="card-text">$ <%#Eval("Precio") %></p>
                                 <asp:LinkButton ID="btnVerDetalle" runat="server" CssClass="btn btn-primary" CommandArgument='<%# Eval("Id") %>' OnClick="btnVerDetalle_Click">Ver Más</asp:LinkButton>
                             </div>
                         </div>

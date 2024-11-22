@@ -51,6 +51,44 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public List<Articulo> listarHome()
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+
+                datos.setearConsulta("SELECT TOP 3 A.idArticulo,A.NOMBRE, A.DESCRIPCION, A.PRECIO, A.STOCK, A.categoria_id, I.url FROM ARTICULOS A INNER JOIN Imagenes I ON A.idArticulo = I.idarticulo WHERE A.estado = 1 ORDER BY NEWID()");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.Id = (int)datos.Lector["idArticulo"];
+                    aux.Nombre = (string)datos.Lector["nombre"];
+                    aux.Descripcion = (string)datos.Lector["descripcion"];
+                    aux.Precio = (decimal)datos.Lector["precio"];
+                    aux.Stock = (int)datos.Lector["stock"];
+                    aux.CategoriaId = (int)datos.Lector["categoria_id"];
+                    aux.UrlImagen = (string)datos.Lector["url"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public List<Articulo> listarConSP()
         {
             List<Articulo> lista = new List<Articulo>();
