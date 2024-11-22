@@ -63,6 +63,11 @@ namespace TPFinal_Ecommerce_Grupo14B
                 
                 clienteSmtp.Send(mensaje);
                 ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire({icon: 'success', title: 'Mensaje enviado', text: 'El mensaje se ha enviado exitosamente.'});", true);
+                txtNombre.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+                txtAsunto.Text = string.Empty;
+                txtMensaje.Text = string.Empty;
+
                 return;
             }
             catch (Exception ex)
