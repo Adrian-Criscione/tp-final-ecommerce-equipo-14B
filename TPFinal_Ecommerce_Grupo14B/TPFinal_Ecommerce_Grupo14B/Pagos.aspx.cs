@@ -69,6 +69,12 @@ namespace TPFinal_Ecommerce_Grupo14B
                 return;
             }
 
+            if (envioDomicilio.Checked && string.IsNullOrEmpty(codigoPostal.Text.Trim()))
+            {
+                MostrarSweetAlert("Error", "Por favor, ingrese el Código Postal para el envío a domicilio.");
+                return;
+            }
+
             GuardarPedido(); // Lógica para procesar el pedido
             MostrarSweetAlert("Éxito", "El pago se ha procesado correctamente.");
 
@@ -129,6 +135,17 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         }
 
+        protected void envioDomicilio_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            codigoPostal.Visible = true;
+            lblCodigoPostal.Visible = true;
+        }
 
+        protected void retiroLocal_CheckedChanged(object sender, EventArgs e)
+        {
+            codigoPostal.Visible = false;
+            lblCodigoPostal.Visible = false;
+        }
     }
 }
