@@ -42,39 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card text-white bg-warning mb-3">
-                    <div class="card-header">Cantidad productos vendidos</div>
-                    <div class="card-body">
-                        <h5>
-                            <asp:Label ID="lblCantidadProductosVendidos" runat="server" Text="10"></asp:Label>
-                        </h5>
-                        <p class="card-text">Total productos vendidos.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-white bg-info mb-3">
-                    <div class="card-header">Total ventas</div>
-                    <div class="card-body">
-                        <h5>
-                            <asp:Label ID="lblValorTotalVentas" runat="server" Text="$ 10"></asp:Label>
-                        </h5>
-                        <p class="card-text">Valor total en pesos de ventas.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-white mb-3" style="background-color: #ff6a00">
-                    <div class="card-header">Productos bajo stock</div>
-                    <div class="card-body">
-                        <h5>
-                            <asp:Label ID="lblProductosBajoStock" runat="server" Text="10"></asp:Label>
-                        </h5>
-                        <p class="card-text">Productos con menos de 3 unidades.</p>
-                    </div>
-                </div>
-            </div>
+           
 
             <!-- Fila que contiene la GridView y el gráfico -->
             <div class="row mb-4 " style="background-color: #eef1e5; color: #000;">
@@ -96,26 +64,7 @@
                     </div>
                 </div>
 
-                <!-- Columna para el gráfico con un offset -->
-                <div class="col-md-4 offset-md-2">
-                    <!-- Espacio adicional con offset -->
-                    <h2>Productos por categoria</h2>
-                    <!-- Aquí se colocará el gráfico -->
-                    <canvas id="ventasChart" width="400" height="400"></canvas>
-                </div>
-
-
-
-            </div>
-                <!--Grafico Lineal-->
-            <div class="row mb-4 " style="background-color: #d7ebf2; color: #000;>
-                <div class="mt-4>
-                    <h2>Gráfico de Ventas</h2>
-                    <!-- Canvas para el gráfico lineal -->
-                    <canvas id="ventasAnualChart"></canvas>
-                </div>
-
-            </div>
+              
 
 
 
